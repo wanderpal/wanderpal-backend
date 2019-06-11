@@ -1,0 +1,29 @@
+{
+  "name": "wanderpal-backend",
+  "version": "1.0.0",
+  "description": "Backend for WanderPal group travel app.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest --coverage",
+    "dbOn": "mkdir -p ./db && mongod --dbpath ./db",
+    "dbOff": "killall mongod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wanderpal/wanderpal-backend.git"
+  },
+  "author": "HN, JE, RB",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wanderpal/wanderpal-backend/issues"
+  },
+  "homepage": "https://github.com/wanderpal/wanderpal-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.5.14",
+    "mongoose-schema-jsonschema": "^1.2.1",
+    "superagent": "^5.0.6"
+  }
+}
