@@ -1,23 +1,21 @@
 'use strict';
 
-// const User = require('../models/users-model.js');
+const User = require('../models/users-model.js');
 
 module.exports = (request, response, next) => {
 
   try {
-    console.log(request.headers);
     let [authType, authString] = request.headers.authorization.split(' ');
-    console.log(authType, '==================',authString, '===========================================');
     switch(authType.toLowerCase()) {
       case 'basic':
         return _authBasic(authString);
       default:
-        console.log('=================DEFAULT===========================');
+        console.log('default');
         return _authError();
     }
 
   } catch(e) {
-    console.log('=========================CATCH22=====================');
+    console.log('auth error');
     return _authError();
   }
 

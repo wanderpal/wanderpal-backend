@@ -34,6 +34,8 @@ users.methods.comparePassword = function(password) {
 //for when the user gets their JWT from google
 users.statics.createFromOauth = function(email) {
 
+    console.log('creating from oauth')
+
     if(! email) { return Promise.reject('Validation Error'); }
 
     return this.findOne( {email} )
