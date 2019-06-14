@@ -5,17 +5,19 @@
 module.exports = (request, response, next) => {
 
   try {
-
-    let [authType, authString] = request.headers.authorization.split(/\s+/);
-
+    console.log(request.headers);
+    let [authType, authString] = request.headers.authorization.split(' ');
+    console.log(authType, '==================',authString, '===========================================');
     switch(authType.toLowerCase()) {
       case 'basic':
         return _authBasic(authString);
       default:
+        console.log('=================DEFAULT===========================');
         return _authError();
     }
 
   } catch(e) {
+    console.log('=========================CATCH22=====================');
     return _authError();
   }
 
