@@ -8,8 +8,10 @@ const auth = require('./middleware.js');
 const oauth = require('./oauth/google.js');
 
 authRouter.post('/signup', (req, res, next) => {
-  let user = new User(req.body);
-  user.save()
+    let user = new User(req.body);
+    console.log(req.body);
+    console.log(user);
+    user.save()
     .then( (user) => {
       req.token = user.generateToken();
       req.user = user;
@@ -27,6 +29,7 @@ authRouter.post('/signin', auth, (req, res, next) => {
 authRouter.get('/oauth', (req,res,next) => {
   oauth(req)
     .then( token => {
+      console.log('Successful oauth login');
       res.status(200).send(token);
     })
     .catch(next);
