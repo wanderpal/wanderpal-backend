@@ -1,5 +1,6 @@
 'use strict';
 
+const days = require('./days-model');
 const mongoose = require('mongoose');
 
 const events = new mongoose.Schema({
