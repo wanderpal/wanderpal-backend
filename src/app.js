@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const errorHandler = require('./middleware/500.js');
 const notFound = require('./middleware/404.js');
 const authRouter = require('./auth/router.js');
+const router = require('./router/routes');
 
 const app = express();
 app.use(express.json());
@@ -17,6 +18,7 @@ app.use(cors({
 }));
 app.use(morgan('dev'));
 app.use(authRouter);
+app.use(router);
 
 let isRunning = false;
 
