@@ -33,22 +33,27 @@ users.methods.comparePassword = function(password) {
 	return bcrypt.compare( password, this.password )
 		.then( valid => valid ? this : null);
 };
+
 //for when the user gets their JWT from google
 users.statics.createFromOauth = function(email) {
 
-	if(! email) { return Promise.reject('Validation Error'); }
+	if (!email) {
+		return Promise.reject('Validation Error');
+	}
 
-	return this.findOne( {email} )
+	return this.findOne({email})
 		.then(user => {
-			if( !user ) { throw new Error('User Not Found'); }
+			if (!user) {
+				throw new Error('User Not Found');
+			}
 			console.log('Welcome Back', user.name);
 			return user;
 		})
-		.catch( error => {
+		.catch(error => {
 			console.log('Creating new user');
 			let username = email;
 			let password = 'none';
-			return this.create({username, password, email});
+			return this.create({username, password});
 		});
 
 };
@@ -58,7 +63,7 @@ users.methods.generateToken = function() {
 		id: this._id,
 		role: this.role,
 	};
-	return jwt.sign(token, process.env.SECRET || 'babyshark');
+	return jwt.sign(token, process.env.SECRET);
 };
 
 module.exports = mongoose.model('users', users);

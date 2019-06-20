@@ -26,11 +26,13 @@
     "express": "^4.17.1",
     "httpie": "^1.1.2",
     "jsonwebtoken": "^8.5.1",
+    "mongodb-memory-server": "^5.1.5",
     "mongoose": "^5.5.14",
     "mongoose-schema-jsonschema": "^1.2.1",
     "morgan": "^1.9.1",
     "nan": "^2.14.0",
     "python": "0.0.4",
-    "superagent": "^5.0.6"
+    "superagent": "^5.0.6",
+    "supertest": "^4.0.2"
   }
 }
