@@ -1,6 +1,6 @@
 'use strict';
 
-const itineraries = require('./itineraries-model');
+const itineraries = require('./itineraries/itineraries-model');
 const mongoose = require('mongoose');
 
 const days = new mongoose.Schema({
