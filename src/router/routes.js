@@ -1,12 +1,11 @@
-'use strict';
+"use strict";
 
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Itineraries = require('../models/itineraries/itineraries-schema.js');
-const ItinerariesModel = require('../models/itineraries/itineraries-model.js');
-const auth = require('../auth/middleware.js');
+const Itineraries = require("../models/itineraries/itineraries-schema.js");
+const ItinerariesModel = require("../models/itineraries/itineraries-model.js");
 
-router.post('/create', (request, response) => {
+router.post("/create", (request, response) => {
   let itinerary = new Itineraries(request.body);
   itinerary.save()
     .then(itinerary => {
@@ -15,13 +14,12 @@ router.post('/create', (request, response) => {
     });
 });
 
-router.get('/dashboard', (request, response) => {
+router.get("/dashboard/:id", (request, response) => {
   let userId = request.userId;
-  ItinerariesModel.getAll({ userId: userId })
+  ItinerariesModel.getAll(userId)
     .then(result => {
-      console.log(request.user);
       response.status(200).send(result);
-    })
+    });
 });
 
 module.exports = router;
