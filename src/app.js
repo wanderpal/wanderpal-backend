@@ -3,6 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+const multer = require('multer');
 
 const errorHandler = require('./middleware/500.js');
 const notFound = require('./middleware/404.js');
