@@ -10,7 +10,7 @@ const itineraries = new mongoose.Schema({
 	dateStart: {type: String, required: true},
 	dateEnd: {type: String, required: true},
 	details: {type: String},
-	image: {type: Buffer}
+	image: {type: String}
 });
 
 module.exports = mongoose.model('itineraries', itineraries);
