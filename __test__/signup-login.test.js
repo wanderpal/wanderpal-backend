@@ -1,5 +1,7 @@
 'use strict';
 
+process.env.SECRET='test';
+
 const server = require('../src/app.js').server;
 const supergoose = require('./supergoose');
 const jwt = require('jsonwebtoken');
