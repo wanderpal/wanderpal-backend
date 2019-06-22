@@ -15,13 +15,13 @@ authRouter.post('/signup', (req, res, next) => {
     req.user = user;
     res.set('token', req.token);
     res.cookie('auth', req.token);
-    res.send(req.token);
+    res.send({token: req.token, user: req.user});
   }).catch(next);
 });
 
 authRouter.post('/login', auth, (req, res, next) => {
   res.cookie('auth', req.token);
-  let loginData = [req.token, req.user];
+  let loginData = {token: req.token, user: req.user};
   res.status(200).send(loginData);
 });
 
