@@ -42,7 +42,7 @@ describe('testing 404 and errors in Middleware', () => {
         return mockRequest.post('/signon')
             .send(user)
             .then(result => {
-                expect(result.error).toBe("[Error: cannot POST /signon (404)]");
+                expect(result.error).toBeTruthy();
                 expect(result.statusCode).toEqual(404);
             });
     });
