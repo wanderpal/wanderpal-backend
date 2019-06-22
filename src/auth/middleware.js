@@ -10,7 +10,6 @@ module.exports = (request, response, next) => {
       case "basic":
         return _authBasic(authString);
       default:
-        console.log("default");
         return _authError();
     }
 

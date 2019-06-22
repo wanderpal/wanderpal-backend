@@ -17,7 +17,7 @@ let authorize = (request) => {
       code: request.query.code,
       client_id: process.env.GOOGLE_CLIENT_ID,
       client_secret: process.env.GOOGLE_CLIENT_SECRET,
-      redirect_uri: `${API}/dashboard`,
+      redirect_uri: `${API}/oauth`,
       grant_type: 'authorization_code',
     })
     .then( response => {
@@ -40,7 +40,10 @@ let authorize = (request) => {
       return Users.createFromOauth(oauthUser.email);
     })
     .then( actualUser => {
-      return actualUser.generateToken();
+      let token = actualUser.generateToken();
+      let user = actualUser;
+
+      return {token:token, user: user};
     })
     .catch( error => error );
 };

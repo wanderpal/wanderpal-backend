@@ -22,4 +22,23 @@ router.get("/dashboard/:id", (request, response) => {
     });
 });
 
+router.put("/itineraries/:id", (request, response) => {
+  let record = request.body;
+  let id = request.param.id;
+
+  ItinerariesModel.put(id, record)
+    .then(itinerary => {
+      console.log(`Itinerary '${itinerary.name}' updated`);
+      response.status(200).send(itinerary);
+    });
+});
+
+router.delete('/itineraries/:id', (request, response) => {
+  let itineraryID = request.params.id;
+  ItinerariesModel.delete(itineraryID)
+    .then(() => {
+      response.status(200);
+    });
+});
+
 module.exports = router;
